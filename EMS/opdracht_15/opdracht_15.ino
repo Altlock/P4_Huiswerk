@@ -3,6 +3,7 @@ void setup() {
   }
 
 byte appendOne(byte b){
+  // Appends a '1' to the byte 'b' and returns the result
   if(b == 0){
     b++;
   }
@@ -14,6 +15,7 @@ byte appendOne(byte b){
 }
 
 byte intToByteLength(int i){
+  // Makes a range of ones where the length == i and returns it as a byte.
   byte r = 0;
   while(i > 0){
     r = appendOne(r);
@@ -21,7 +23,6 @@ byte intToByteLength(int i){
   }
   return r;
 }
-
 
 void loop() {
   int z = analogRead(A0);
