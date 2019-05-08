@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Week2"
+             x:Class="Week2.MainPage">
+        <ListView x:Name="MovieList" RowHeight="72">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="4">
+                            <Label x:Name="Title" FontSize="16" Margin="8,0,8,0" Text="{Binding Title}"></Label>
+                            <Label FontSize="8" Margin="8,0,8,0" Text="{Binding Description}"></Label>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,16,0,16">
+                                <Button x:Name="AddUpdateButton" Text="Add/Update" Pressed="AddUpdateButton_OnPressed"></Button>
+                                <Button x:Name="RemoveButton" Text="Remove" Pressed="RemoveButton_OnPressed"></Button>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+</ContentPage>
