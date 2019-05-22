@@ -10,6 +10,8 @@ namespace Week2
 {
     public partial class MainPage : ContentPage
     {
+        private DataBaseManager db;
+
         public MainPage()
         {
             var movies = new ObservableCollection<Movie>
@@ -23,17 +25,19 @@ namespace Week2
             };
 
             InitializeComponent();
-            MovieList.ItemsSource = movies;
+            db = new DataBaseManager();
+            db.AddOrUpdateMovie("The Avengers (2012)","Earth's mightiest heroes must come together and learn to fight as a team","");
+            MovieList.ItemsSource = db.GetAllMovies();
         }
 
         private void RemoveButton_OnPressed(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            db.DeleteMovie("");
         }
 
         private void AddUpdateButton_OnPressed(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            db.AddOrUpdateMovie("Test","Test test","");
         }
     }
 }

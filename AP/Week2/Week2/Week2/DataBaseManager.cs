@@ -10,7 +10,7 @@ namespace Week2
     {
         private readonly SQLiteConnection _c;
         
-        private DataBaseManager()
+        public DataBaseManager()
         {
             _c = DependencyService.Get<IDBInterface>().CreateConnection();
             _c.CreateTable<Movie>();
