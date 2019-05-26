@@ -20,13 +20,15 @@ namespace Week2
                 {
                     Title = "The Avengers (2012)",
                     Description =
-                        "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity."
+                        "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+                    ImageSource = ""
                 }
             };
 
             InitializeComponent();
             db = new DataBaseManager();
-            db.AddOrUpdateMovie("The Avengers (2012)","Earth's mightiest heroes must come together and learn to fight as a team","");
+            db.DeleteMovie("The Avengers (2012)");
+            db.AddOrUpdateMovie(movies[0]);
             MovieList.ItemsSource = db.GetAllMovies();
         }
 
@@ -37,7 +39,7 @@ namespace Week2
 
         private void AddUpdateButton_OnPressed(object sender, EventArgs e)
         {
-            db.AddOrUpdateMovie("Test","Test test","");
+            db.AddOrUpdateMovie(new Movie(){Description = "",ImageSource = "",Title = "Test"});
         }
     }
 }

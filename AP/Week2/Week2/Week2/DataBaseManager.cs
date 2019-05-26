@@ -21,21 +21,15 @@ namespace Week2
             return (from m in _c.Table<Movie>() select m).ToList();
         }
 
-        public void AddOrUpdateMovie(string title, string description, string imagesource)
+        public void AddOrUpdateMovie(Movie m)
         {
-            var movie = new Movie
-            {
-                Description = description,
-                ImageSource = imagesource,
-                Title = title
-            };
-
-            _c.Insert(movie);
+            if(!DoesMovieExist(m.Title))
+                _c.Insert(m);
         }
 
         public void DeleteMovie(string title)
         {
-            _c.Delete<Movie>(title);
+            _c.Delete<Movie>(GetMovieID(title));
         }
 
         public bool DoesMovieExist(string title)

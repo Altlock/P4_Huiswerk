@@ -7,41 +7,48 @@ namespace Week3
 {
     public class Client
     {
-        public static void GetTemp()
-        {
-            try
-            {
-                IPAddress ipAddress = IPAddress.Parse("10.211.55.5");
-                Socket sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-                try
-                {
-                    sender.Connect(new IPEndPoint(ipAddress, 11000));
+        private Socket sender;
+        private IPAddress ip;
+        private readonly IPEndPoint _remoteEP;
 
-                    byte[] msg = Encoding.ASCII.GetBytes("Test message, wooh! :D");
-                    sender.Send(msg);
-                    int bytesRec = sender.Receive(new byte[1024]);
-                    Console.WriteLine(
-                        Encoding.ASCII.GetString(new byte[1024], 0, bytesRec));
-                    sender.Shutdown(SocketShutdown.Both);
-                    sender.Close();
-                }
-                catch (ArgumentNullException ane)
-                {
-                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }
-                catch (SocketException se)
-                {
-                    Console.WriteLine("SocketException : {0}", se.ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
+        public Client(string ipAdress, int port)
+        {
+            ip = IPAddress.Parse(ipAdress);
+            _remoteEP = new IPEndPoint(ip, port);
+        }
+
+        public void OpenConnection()
+        {
+            sender = new Socket(ip.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            sender.Connect(_remoteEP);
+        }
+
+        public void CloseConnection()
+        {
+            sender.Shutdown(SocketShutdown.Both);
+            sender.Close();
+        }
+
+        public void Send(string message)
+        {
+            var msg = Encoding.ASCII.GetBytes(message);
+            sender.Send(msg);
+        }
+
+        public string ReceiveTemp()
+        {
+            var bytes = new byte[1024];
+            Send("<TEMP>");
+            var bytesReceived = sender.Receive(bytes);
+            return Encoding.ASCII.GetString(bytes, 0, bytesReceived);
+        }
+
+        public string GetTemp()
+        {
+            OpenConnection();
+            var t = ReceiveTemp();
+            CloseConnection();
+            return t;
         }
     }
 }

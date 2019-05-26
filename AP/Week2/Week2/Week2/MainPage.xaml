@@ -10,10 +10,9 @@
                         <StackLayout Margin="4">
                             <Label x:Name="Title" FontSize="16" Margin="8,0,8,0" Text="{Binding Title}"></Label>
                             <Label FontSize="8" Margin="8,0,8,0" Text="{Binding Description}"></Label>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,16,0,16">
-                                <Button x:Name="AddUpdateButton" Text="Add/Update" Pressed="AddUpdateButton_OnPressed"></Button>
-                                <Button x:Name="RemoveButton" Text="Remove" Pressed="RemoveButton_OnPressed"></Button>
-                            </StackLayout>
+                                <Button x:Name="AddUpdateButton" Text="Add/Update" Pressed="AddUpdateButton_OnPressed" HeightRequest="100"></Button>
+                                <Button x:Name="RemoveButton" Text="Remove" Pressed="RemoveButton_OnPressed" HeightRequest="100"></Button>
+                            
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

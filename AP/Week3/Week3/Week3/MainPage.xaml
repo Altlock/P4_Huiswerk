@@ -5,10 +5,8 @@
              x:Class="Week3.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Temperatuur: {Client.GetTemp()}" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Label Text="Temperatuur: "/>
+        <Label Text="{Binding temperature}"/>
     </StackLayout>
 
 </ContentPage>
