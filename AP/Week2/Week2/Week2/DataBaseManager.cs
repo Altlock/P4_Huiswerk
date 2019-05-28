@@ -16,10 +16,8 @@ namespace Week2
             _c.CreateTable<Movie>();
         }
 
-        public List<Movie> GetAllMovies()
-        {
-            return (from m in _c.Table<Movie>() select m).ToList();
-        }
+        public List<Movie> GetAllMovies() =>
+            (from m in _c.Table<Movie>() select m).ToList();
 
         public void AddOrUpdateMovie(Movie m)
         {
