@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="week4.Views.RegisterPage">
+    <StackLayout>
+        <Label Text="Username" Margin="8"/>
+        <Entry x:Name="Username" Margin="8"/>
+        <Label Text="Password" Margin="8"/>
+        <Entry x:Name="Password" Margin="8"/>
+        <Label Text="Repeat password" Margin="8"/>
+        <Entry x:Name="RepeatPassword" Margin="8"/>
+        <Label x:Name="msg" TextColor="Red" FontAttributes="Italic" FontSize="Small"/>
+        <Button x:Name="RegisterButton" Text="Register" HorizontalOptions="Center" Clicked="Register_Clicked" />
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="week4.Views.AddPage">
+    <StackLayout>
+        <!--Buttons-->
+        <StackLayout>
+            <Image ClassId="1" x:Name="MovieButton" HeightRequest="100" WidthRequest="100" Margin="2,0,2,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SelectImage_Clicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image ClassId="2" x:Name="SeriesButton" HeightRequest="100" WidthRequest="100" Margin="2,0,2,0" Opacity="0.5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SelectImage_Clicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <!--Items-->
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <!--Default-->
+                <Label x:Name="Title"/>
+                <Entry x:Name="TitleEntry"/>
+                
+                <Label x:Name="Description"/>
+                <Entry x:Name="DescriptionEntry"/>
+
+                <Label x:Name="Year"/>
+                <Entry x:Name="YearEntry"/>
+
+                <!-- Series-->
+                
+                <Label x:Name="YearEnded" IsVisible="False"/>
+                <Entry x:Name="YearEndedEntry" IsVisible="False"/>
+                
+                <Label x:Name="NumberOfEpisodes" IsVisible="False"/>
+                <Entry x:Name="NumberOfEpisodesEntry" IsVisible="False"/>
+                
+                <Label x:Name="NumberOfSeasons" IsVisible="False"/>
+                <Entry x:Name="NumberOfSeasonsEntry" IsVisible="False"/>
+                
+                <Button x:Name="AddButton" Text="Add" Clicked="AddButton_Clicked" 
+                        HorizontalOptions="Center" HeightRequest="32" WidthRequest="96" Padding="2" Margin="0,16,0,0"/>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>
